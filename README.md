@@ -1,5 +1,5 @@
 # Modelo Conceitual Banco de dados
-
+<img src="Modelo Conceitual do Banco de Dados.png">
 ### Documentação do Script SQL
 
 Aqui está uma documentação detalhada do script SQL que você forneceu, explicando cada comando e sua função dentro do contexto de criação de um banco de dados para um sistema educacional ou similar:
