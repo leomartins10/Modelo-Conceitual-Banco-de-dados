@@ -1,5 +1,69 @@
 # Modelo Conceitual Banco de dados
 <img src="Modelo Conceitual do Banco de Dados.png">
+
+
+```sql
+-- Drop tables if they exist to start fresh
+DROP TABLE IF EXISTS feedbacks, habilidades, aluno, professor, time, usuario;
+
+-- Table 'usuario'
+CREATE TABLE usuario (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255),
+  idade INT,
+  nacionalidade VARCHAR(255),
+  universidade VARCHAR(255),
+  email VARCHAR(255),
+  senha VARCHAR(255)
+);
+
+-- Table 'habilidades'
+CREATE TABLE habilidades (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  habilidade1 VARCHAR(255),
+  habilidade2 VARCHAR(255),
+  habilidade3 VARCHAR(255)
+);
+
+-- Table 'time'
+CREATE TABLE time (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255),
+  descricao VARCHAR(255)
+);
+
+-- Table 'aluno'
+CREATE TABLE aluno (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT,
+  habilidades_id INT,
+  time_id INT,
+  FOREIGN KEY (usuario_id) REFERENCES usuario(id),
+  FOREIGN KEY (habilidades_id) REFERENCES habilidades(id),
+  FOREIGN KEY (time_id) REFERENCES time(id)
+);
+
+-- Table 'professor'
+CREATE TABLE professor (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT,
+  time_id INT,
+  FOREIGN KEY (usuario_id) REFERENCES usuario(id),
+  FOREIGN KEY (time_id) REFERENCES time(id)
+);
+
+-- Table 'feedbacks'
+CREATE TABLE feedbacks (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  autor_id INT,
+  destinatario_id INT,
+  conteudo TEXT,
+  FOREIGN KEY (autor_id) REFERENCES usuario(id),
+  FOREIGN KEY (destinatario_id) REFERENCES usuario(id)
+);
+
+```
+
 ### Documentação do Script SQL
 
 Aqui está uma documentação detalhada do script SQL que você forneceu, explicando cada comando e sua função dentro do contexto de criação de um banco de dados para um sistema educacional ou similar:
